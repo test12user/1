@@ -1,0 +1,29 @@
+name: Create Artifacts
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Perform build steps or any other necessary actions here
+
+      - name: Create Artifacts
+        run: |
+          # Create the artifacts
+          mkdir artifacts
+          touch artifacts/file1.txt
+          touch artifacts/file2.txt
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifacts
+          path: artifacts
